@@ -21,6 +21,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ```shell
     yarn post-pack :: post data pack
-    yarn deploy :: build & deploy to GitHub Pages
+    yarn build :: build
+    yarn deploy :: deploy to GitHub Pages
 ```
 

@@ -27,9 +27,9 @@ export class Article extends Component {
     articleActions: PropTypes.object.isRequired
   }
 
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   componentDidMount() {
     const { postName } = this.props.match.params

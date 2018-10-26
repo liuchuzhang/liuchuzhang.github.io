@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import './style.css'
 
 export class Aside extends Component {
@@ -12,16 +12,16 @@ export class Aside extends Component {
     data: {}
   }
 
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   accountList(items) {
     const list = items.map((t, i) => {
       return (
         <li key={i}>
           {t.text} :
-          <a href={t.link} target="_blank">
+          <a href={t.link} target="_blank" rel="noopener noreferrer nofollow">
             {t.link}
           </a>
         </li>

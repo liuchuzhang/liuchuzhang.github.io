@@ -13,9 +13,9 @@ export class PostList extends Component {
     data: []
   }
 
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   articleImage(t, i) {
     let image = t
@@ -42,7 +42,7 @@ export class PostList extends Component {
         <article className="article-item" key={i}>
           <Link to={t.url}>
             {/* 随机图片 非随机的 `key` 为 `image` */}
-            <img src={this.articleImage(t.s, i)} />
+            <img src={this.articleImage(t.s, i)} alt={t.title} />
           </Link>
           <div className="tag-items">{this.tagItems(t.tag)}</div>
           <Link to={t.url}>

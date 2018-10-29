@@ -5,6 +5,7 @@ import { highlightAll } from 'prismjs'
 import CodeBlock from './components/CodeBlock'
 import ImageRenderer from './components/ImageRenderer'
 import 'prismjs/themes/prism.css'
+import './style.css'
 
 export class Article extends Component {
   static propTypes = {

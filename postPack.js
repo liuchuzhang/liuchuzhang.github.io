@@ -11,15 +11,15 @@ const postData = allPost.map(p => {
     path.resolve(`src/posts/${p}/article.md`),
     'utf-8'
   )
-  const titleHandler = /标题(:|：).+\n/gi.exec(article)
-  const tagHandler = /标签(:|：).+\n/gi.exec(article)
-  const contentHandler = article.split(/={3}\n/gi)
+  const titleHandler = /标题(:|：).+(\n|\r)/gi.exec(article)
+  const tagHandler = /标签(:|：).+(\n|\r)/gi.exec(article)
+  const contentHandler = article.split(/={3}(\n|\r)/gi)
 
   const title = titleHandler.length
-    ? titleHandler[0].replace(/(标题(:|：)\s*|\n)/gi, '')
+    ? titleHandler[0].replace(/(标题(:|：)\s*|(\n|\r))/gi, '')
     : ''
   const tag = tagHandler.length
-    ? tagHandler[0].replace(/(标签(:|：)\s*|\n)/gi, '').split(/,\s?/gi)
+    ? tagHandler[0].replace(/(标签(:|：)\s*|(\n|\r))/gi, '').split(/,\s?/gi)
     : ''
   const time = p
     .split('_')[0]

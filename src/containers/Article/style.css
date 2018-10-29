@@ -9,7 +9,7 @@
 }
 
 .article-content .article-nav {
-  width: 400px;
+  width: 300px;
   max-height: 800px;
   overflow: auto;
   position: fixed;
@@ -18,7 +18,8 @@
 }
 
 .article-content .article-inner {
-  margin-right: 420px;
+  width: 100%;
+  margin-right: 320px;
   background-color: #fcfcfc;
   padding: 20px;
   box-sizing: border-box;

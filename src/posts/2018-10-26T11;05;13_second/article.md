@@ -11,7 +11,7 @@
 
 安装依赖
 
-```
+```shell
 $ yarn install
 yarn install v1.10.1
 info No lockfile found.

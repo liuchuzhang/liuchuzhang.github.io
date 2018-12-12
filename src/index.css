@@ -52,3 +52,7 @@ ul li,
 dl li {
   list-style: none;
 }
+
+.main-container .ant-breadcrumb {
+  padding-left: 10px;
+}

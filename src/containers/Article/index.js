@@ -11,7 +11,7 @@ import MarkDownNav from 'markdown-navbar'
 // MarkDownNav catch: index.js:191 Uncaught TypeError: Cannot read property 'offsetTop' of null at index.js:191
 import { Link } from 'react-router-dom'
 import Back from './../../components/Back'
-import { BackTop } from 'antd';
+import { BackTop, Breadcrumb } from 'antd'
 import 'markdown-navbar/dist/navbar.css'
 import './style.css'
 
@@ -70,6 +70,12 @@ export class Article extends Component {
         <Aside data={configInfo} />
         <div className="main-container">
           <Nav data={navList} />
+          <Breadcrumb>
+            <Breadcrumb.Item>
+              <Link to="/">首页</Link>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>{title ? title : '标题加载中...'}</Breadcrumb.Item>
+          </Breadcrumb>
           <Back />
           <div className="main-box">
             <div className="article-title">

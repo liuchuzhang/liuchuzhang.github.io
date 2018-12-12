@@ -7,7 +7,8 @@ import Nav from './../../components/Nav'
 import Aside from './../../components/Aside'
 import PostList from './../../components/PostList'
 import configInfo from './../../config'
-import { Button, BackTop } from 'antd'
+import { Link } from 'react-router-dom'
+import { Button, BackTop, Breadcrumb } from 'antd'
 import Back from './../../components/Back'
 
 const mapStateToProps = ({ tagList }) => ({ tagList })
@@ -96,6 +97,12 @@ export class TagList extends Component {
         <Aside data={configInfo} />
         <div className="main-container">
           <Nav data={navList} activeTag={tagName} />
+          <Breadcrumb>
+            <Breadcrumb.Item>
+              <Link to="/">首页</Link>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>{tagName}</Breadcrumb.Item>
+          </Breadcrumb>
           <Back />
           <div className="main-box">
             <PostList data={postList} />

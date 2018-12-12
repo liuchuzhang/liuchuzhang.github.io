@@ -12,6 +12,7 @@ export const createRoutes = () => {
     }),
     exact: true
   }
+  
   const post = {
     path: '/tag/:tagName',
     component: Loadable({

@@ -102,4 +102,4 @@ fs.writeFileSync(
   'utf-8'
 )
 
-console.log('文章打包完毕')
+console.log('文章打包完毕，`yarn build` 进行打包构建，`yarn deploy` 部署并推到 Github Pages 的分支')

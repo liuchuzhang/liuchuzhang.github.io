@@ -35,6 +35,7 @@ download(url)
 常用 Content-Type(Mime-Type)  [更多](http://tool.oschina.net/commons)
 
 ```js
+// 通用二进制文件 `application/octet-stream`
 export default {
   '.xls': 'application/vnd.ms-excel',
   '.xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
@@ -42,7 +43,14 @@ export default {
   '.jpg': 'image/jpeg',
   '.gif': 'image/gif',
   '.ico': 'image/x-icon',
-  '.docx':'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-  '.doc':'application/msword'
+  '.docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  '.doc': 'application/msword',
+  '.pdf': 'application/pdf',
+  '.zip': 'application/zip',
+  '.rar': 'application/octet-stream',
+  '.tgz': 'application/x-compressed',
+  '.psd': 'application/octet-stream',
+  '.mp3': 'audio/mpeg3',
+  '.mp4': 'application/octet-stream'
 }
 ```

@@ -1,0 +1,13 @@
+.ant-list {
+	width: 200px;
+	overflow: hidden;
+}
+
+.rank-list-container {
+    width: 217px;
+    height: 300px;
+	overflow: auto;
+	position: fixed;
+	right: 20px;
+	top: 60px;
+}

@@ -1,7 +1,9 @@
 import React from 'react'
 import Loadable from 'react-loadable'
+import { Spin, Icon } from 'antd'
 
-const Loading = () => <div className="page-loading">Loading...</div>
+const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />
+const Loading = () => <Spin indicator={antIcon} />
 
 export const createRoutes = () => {
   const home = {
@@ -12,7 +14,7 @@ export const createRoutes = () => {
     }),
     exact: true
   }
-  
+
   const post = {
     path: '/tag/:tagName',
     component: Loadable({

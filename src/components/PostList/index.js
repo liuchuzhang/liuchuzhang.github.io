@@ -29,7 +29,7 @@ export class PostList extends Component {
     const items = tags.map((t, i) => {
       return (
         <Link to={`/tag/${t}`} key={i}>
-          <span>{t}</span>
+          <span className="item">{t}</span>
         </Link>
       )
     })

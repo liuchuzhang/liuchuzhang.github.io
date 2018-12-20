@@ -11,10 +11,13 @@ import MarkDownNav from 'markdown-navbar'
 // MarkDownNav catch: index.js:191 Uncaught TypeError: Cannot read property 'offsetTop' of null at index.js:191
 import { Link } from 'react-router-dom'
 import Back from './../../components/Back'
-import RankList from './../../components/RankList'
+// import RankList from './../../components/RankList'
 import { BackTop, Breadcrumb } from 'antd'
 import 'markdown-navbar/dist/navbar.css'
 import './style.css'
+// var Remarkable = require('remarkable')
+// var toc = require('markdown-toc')
+// import toc from 'markdown-toc'
 
 const mapStateToProps = ({ article }) => ({ article })
 
@@ -44,6 +47,20 @@ export class Article extends Component {
 			return <li key={index}>{item}</li>
 		})
 		return list
+	}
+
+	componentDidUpdate() {
+		// const {
+		// 	postContent: { title, time, tag, content },
+		// } = this.props.article.toJS()
+
+		// if (content) {
+		// 	const markdownJson = toc(content)
+
+		// 	console.log(markdownJson)
+		// }
+
+		// console.log(this.props.article.toJS())
 	}
 
 	tagItems(items) {
@@ -78,7 +95,7 @@ export class Article extends Component {
 					</Breadcrumb>
 					<Back />
 
-					<RankList data={rankList} />
+					{/* <RankList data={rankList} /> */}
 					<div className="main-box">
 						<div className="article-title">
 							<h1>{title ? title : '标题加载中...'}</h1>

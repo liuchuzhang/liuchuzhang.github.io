@@ -1,14 +1,17 @@
 ===
 
-标题: 使用 bpmn 显示流程图并设置颜色
+标题: 使用 Bpmn 显示流程图并设置颜色
 标签: vue
 
 ===
 
-## 使用 bpmn
+## 使用 Bpmn
 
-前端框架使用 Vue 流程图使用
-- [bpmn-js](https://github.com/bpmn-io)   
+前端框架使用的是 Vue ，流程图使用   
+需要先拿到 XML 的字符串找到到需要变样式的 `id` 才能进行样式设置   
+安装依赖 `npm install bpmn-js -S`
+
+- [bpmn-js](https://github.com/bpmn-io)
 - [官方文档地址](https://bpmn.io)
 - [官方 examples](https://github.com/bpmn-io/bpmn-js-examples)
 
@@ -16,23 +19,29 @@ template
 
 ```html
 <template>
-    <div class="container">
-        <div class="canvas" ref="canvas"></div>
-    </div>
+  <div class="container"><div class="canvas" ref="canvas"></div></div>
 </template>
 ```
-
 
 script
 
 ```js
-// 查看 bpmn 目前只需要引入这两个 需要编辑功能查看 https://github.com/bpmn-io
+// 查看 Bpmn 引入 Viewer 但 Viewer 设置颜色方法单一
+// 由于这里需要更多设置颜色的功能所以引入了 Modeler 并设置 `pointer-events: none`
+// 更多功能查看 https://github.com/bpmn-io
 import BpmnModeler from 'bpmn-js/lib/Modeler'
 import Modeling from 'bpmn-js/lib/features/modeling/Modeling'
 export default {
-    mounted() {
-      this.initBpmn()
-    }, 
+  data() {
+    return {
+      bpmnModeler: null,
+      container: null
+    }
+  },
+  mounted() {
+    this.initBpmn()
+  },
+  methods: {
     initBpmn() {
       this.container = this.$refs.content
       const canvas = this.$refs.canvas
@@ -54,6 +63,7 @@ export default {
           console.log('bpmn xml 构建失败!')
           console.error(err)
         } else {
+          // 构建成功
           // self.success()
         }
         const canvas = self.bpmnModeler.get('canvas'),
@@ -69,19 +79,20 @@ export default {
         // 分叉节点 id
         const bifIds = ['exclusivegateway1', 'exclusivegateway2']
         const allNodeIds = [...nodeIds, ...lineIds, ...bifIds]
-        // 设置 bpmn 样式一共有提供三种方法
-        // 新建 Dom 来覆盖样式
+        // 设置 Bpmn 样式一共有提供三种方法
+        // 新建 DOM 来覆盖样式
         self.setBifNodeColor(bifIds, elementRegistry, overlays)
         // modeling 的方法 setColor 可直接设置颜色
         self.setLineColor(lineIds, modeling, elementRegistry)
         // 添加 ClassName 设置样式
-        self.setNodeColor(nodeIds, 'nodeSuccess', canvas)
+        self.setNodeColor(nodeIds, 'success-node', canvas)
       })
     },
     setBifNodeColor(ids, elementRegistry, overlays) {
       ids.forEach(id => {
+        // 获取模型对象
         const shape = elementRegistry.get(id)
-        // 这里 $ 为 JQuery 全局的 $
+        // 这里用到了 JQuery, 此 $ 为全局的 JQuery 
         const $overlayHtml = $('<div class="highlight-overlay">').css({
           width: shape.width,
           height: shape.height,
@@ -97,19 +108,28 @@ export default {
           html: $overlayHtml
         })
       })
+    },
+    setLineColor(ids, modeling, elementRegistry) {
+      const elements = ids.map(id => elementRegistry.get(id))
+      modeling.setColor(elements, {
+        stroke: 'green',
+        fill: 'green'
+      })
+    },
+    setNodeColor(ids, colorClass, canvas) {
+      ids.forEach(id => canvas.addMarker(id, colorClass))
     }
+  }
 }
 ```
 
-scss 
+scss
+
 ```scss
-.bjs-container {
-  pointer-events: none;
-}
-.canvas .djs-hit {
+.bjs-container, .canvas .djs-hit {
   pointer-events: none !important;
 }
-.nodeSuccess {
+.success-node {
   .djs-visual {
     rect,
     circle {
@@ -126,9 +146,7 @@ scss
     }
   }
 }
-
 .highlight-overlay {
-    // 这里设置样式
+  // 这里设置自定义 DOM 样式
 }
 ```
-

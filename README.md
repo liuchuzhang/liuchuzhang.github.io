@@ -1,27 +1,21 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## liuchuzhang.github.io_blog
+# liuchuzhang.github.io
 
-### install
+## Install
 
 ```shell
     git clone https://github.com/liuchuzhang/liuchuzhang.github.io.git
     cd liuchuzhang.github.io
     yarn install 
     yarn start
+    # Open http://localhost:3000/
 ```
 
-### new post
+## New Post
 
 ```shell
-    yarn new-post 
-```
-
-### deploy
-
-```shell
+    yarn new-post  # new post
     yarn post-pack # post data pack
-    yarn build     # build
-    yarn deploy    # deploy to GitHub Pages
+    yarn deploy    # deploy to GitHub pages
 ```
-

@@ -1,6 +1,7 @@
 const fs = require('fs-extra')
 const path = require('path')
 const sortBy = require('lodash').sortBy
+const process = require('child_process')
 
 const allPost = fs
   .readdirSync(path.resolve('src/posts/'))
@@ -102,4 +103,12 @@ fs.writeFileSync(
   'utf-8'
 )
 
-console.log('文章打包完毕，`yarn build` 进行打包构建，`yarn deploy` 部署并推到 Github Pages 的分支')
+console.log('数据打包完毕，正在进行文章打包。。。')
+
+process.exec('npm run build', function (error, stdout, stderr) {
+  if (error !== null) {
+    console.log('exec error: ' + error);
+  } else {
+    console.log('文章打包完毕。输入 `yarn deploy` 部署并推到 Github Pages 的分支。')
+  }
+});

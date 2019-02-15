@@ -104,6 +104,7 @@ fs.writeFileSync(
 )
 
 console.log('数据打包完毕，正在进行文章打包。。。')
+console.log('> npm run build')
 
 process.exec('npm run build', function (error, stdout, stderr) {
   if (error !== null) {

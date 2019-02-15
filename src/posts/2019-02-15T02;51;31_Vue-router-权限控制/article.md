@@ -18,7 +18,6 @@ router.beforeEach((to, form, next) => {
   const pathname = routePath.indexOf('/') > -1 ? routePath.split('/')[1] : ''
   const menus = Array.isArray(menuData) ? menuData : ['/home'] // 所有权限菜单
   const isReject = pathname === '' ? false : !menus.includes(`/${pathname}`) // 是否 404
-
   if (!isUat) {
     let time = jscookie.get('t')
     let nowTime = new Date().getTime()

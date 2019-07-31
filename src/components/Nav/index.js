@@ -75,7 +75,7 @@ export class Nav extends Component {
     return navItems
   }
 
-  renderMore() {
+  renderMore() {    
     const navItems = this.props.data.slice(this.navTagNum).map((t, i) => {
       return (
         <Menu.Item key={i}>

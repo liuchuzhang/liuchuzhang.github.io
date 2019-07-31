@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -11,8 +11,8 @@ import MarkDownNav from 'markdown-navbar'
 // MarkDownNav catch: index.js:191 Uncaught TypeError: Cannot read property 'offsetTop' of null at index.js:191
 import { Link } from 'react-router-dom'
 import Back from './../../components/Back'
-// import RankList from './../../components/RankList'
-import { BackTop, Breadcrumb } from 'antd'
+import RankList from './../../components/RankList'
+import { BackTop, Breadcrumb, Button } from 'antd'
 import 'markdown-navbar/dist/navbar.css'
 import './style.css'
 // var Remarkable = require('remarkable')

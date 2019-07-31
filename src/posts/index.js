@@ -12,7 +12,11 @@ export const getPostList = async () => {
 
 export const getTagInfo = async () => {
 	if (!tag.data) {
-		tag = await axios.get('/tag.json')
+		const { data } = await axios.get('/tag.json')
+		tag.data = {
+			...data,
+			tagInfo: data.tagInfo.sort((a, b) => a.num > b.num)
+		}
 	}
 	return tag.data
 }
@@ -58,25 +62,6 @@ export const fetchPost = async postName => {
 
 export const getRankList = async () => {
 	const tagData = await getTagInfo()
-	// const tagList = postList.map(p => p.tag)
-	// const rankList = tagList.reduce((current, r, t) => {
-	// 	const currentTags = current.map(t => t.tag)
-	// 	if (currentTags.includes(t => t.tag === r)) {
-	// 		current.forEach(item => {
-	// 			if (item.tag === r) {
-	// 				item.count += 1
-	// 			}
-	// 		})
-	// 		return current
-	// 	}
-	// 	current.push({
-	// 		tag: r,
-	// 		count: 1,
-	// 	})
-
-	// 	console.log(current)
-	// 	return current
-	// }, [])
 
 	const collection = sortBy(tagData.tagInfo, t => -t.count)
 	return collection

@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://liuchuzhang.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -84,8 +84,35 @@ pagination_dir: page
 # Include / Exclude file(s)
 ## include:/exclude: options only apply to the 'source/' folder
 include:
+  - ".nojekyll"
+  # 包括 'source/css/_typing.css'
+  - "css/_typing.css"
+  # 包括 'source/_css/' 中的任何文件，但不包括子目录及其其中的文件。
+  - "_css/*"
+  # 包含 'source/_css/' 中的任何文件和子目录下的任何文件
+  - "_css/**/*"
+
 exclude:
+  # 不包括 'source/js/test.js'
+  - "js/test.js"
+  # 不包括 'source/js/' 中的文件、但包括子目录下的所有目录和文件
+  - "js/*"
+  # 不包括 'source/js/' 中的文件和子目录下的任何文件
+  - "js/**/*"
+  # 不包括 'source/js/' 目录下的所有文件名以 'test' 开头的文件，但包括其它文件和子目录下的单文件
+  - "js/test*"
+  # 不包括 'source/js/' 及其子目录中任何以 'test' 开头的文件
+  - "js/**/test*"
+  # 不要用 exclude 来忽略 'source/_posts/' 中的文件。你应该使用 'skip_render'，或者在要忽略的文件的文件名之前加一个下划线 '_'
+  # 在这里配置一个 - "_posts/hello-world.md" 是没有用的。
+
 ignore:
+  # Ignore any folder named 'foo'.
+  - "**/foo"
+  # Ignore 'foo' folder in 'themes/' only.
+  - "**/themes/*/foo"
+  # Same as above, but applies to every subfolders of 'themes/'.
+  - "**/themes/**/foo"
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
@@ -95,4 +122,6 @@ theme: theme
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/liuchuzhang/liuchuzhang.github.io
+  branch: master
